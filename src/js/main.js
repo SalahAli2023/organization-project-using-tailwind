@@ -4,11 +4,11 @@ console.log("بسم الله نبدأ");
 const btnDonate= document.querySelector(".btn-primary")
 const btnLearnMore= document.querySelector(".btn-secondary")
 
-const toggleBtn = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinksMobile = document.querySelector('.nav-links-mobile');
 
-const themeToggle = document.getElementById("theme-toggle");
-const savedTheme = localStorage.getItem("theme");
+// const themeToggle = document.getElementById("theme-toggle");
+// const savedTheme = localStorage.getItem("theme");
 
 const newsletterForm = document.querySelector('.newsletter-form');
 
@@ -43,12 +43,12 @@ const messageRegex = /^[a-zA-Z\s]{10,350}$/;
 // Initialize Functions when page loads
 window.addEventListener('DOMContentLoaded', () => {
     
-    loading();
+    // loading();
     animateStats();
     navbarToggle();
-    darkMode();
+    // darkMode();
     moveToUp();
-    contactForm.addEventListener('submit', handleFormSubmit);
+    // contactForm.addEventListener('submit', handleFormSubmit);
 
 
 });
@@ -64,34 +64,34 @@ closeModal.addEventListener('click', () => donationModal.style.display = 'none')
 subscribeByNewsletterForm();
 
 
-// nav bar Toggle
+// Mobile Menu Toggle
 function navbarToggle(){
-    if(toggleBtn && navLinks){
-        toggleBtn.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-        });
-    }
+        menuToggle.addEventListener('click', () => {
+        navLinksMobile.classList.toggle('hidden');
+        menuToggle.classList.toggle('active');
+    });
 }
 
 //dark Mode
 function darkMode(){
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        if (themeToggle) themeToggle.checked = true;
-    }
+    // if (localStorage.getItem('theme') === 'dark') {
+    //     document.body.classList.add('dark-mode');
+    //     if (themeToggle) themeToggle.checked = true;
+    // }
 
-    if (themeToggle) {
-        themeToggle.addEventListener('change', () => {
-            document.body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', themeToggle.checked ? 'dark' : 'light');
-        });
-    }
+    // if (themeToggle) {
+    //     themeToggle.addEventListener('change', () => {
+    //         document.body.classList.toggle('dark-mode');
+    //         localStorage.setItem('theme', themeToggle.checked ? 'dark' : 'light');
+    //     });
+    // }
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    document.body.classList.toggle('dark-mode', e.matches);
-    if (themeToggle) themeToggle.checked = e.matches;
-    });
+    // window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    // document.body.classList.toggle('dark-mode', e.matches);
+    // if (themeToggle) themeToggle.checked = e.matches;
+    // });
 }
+
 
 // Animate Stats Counter
 function animateStats() {
@@ -114,29 +114,32 @@ function animateStats() {
 
 //Button Move Up
 function moveToUp(){
-    const backToTopBtn = document.createElement('button');
-    backToTopBtn.innerHTML = '↑';
-    backToTopBtn.classList.add('back-to-top');
-    document.body.appendChild(backToTopBtn);
-
+    const backToTopButton = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
-        backToTopBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+    if (window.scrollY > 300) {
+        backToTopButton.classList.remove('hidden');
+    } else {
+        backToTopButton.classList.add('hidden');
+    }
     });
 
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
+})
 }
 
 // For loading
-function loading(){
-    window.addEventListener('load', () => {
-        document.querySelector('.loader').style.opacity = 0;
-        setTimeout(() => {
-            document.querySelector('.loader').style.display = 'none';
-        }, 500);
-    });
-}
+// function loading(){
+//     window.addEventListener('load', () => {
+//         document.querySelector('.loader').style.opacity = 0;
+//         setTimeout(() => {
+//             document.querySelector('.loader').style.display = 'none';
+//         }, 500);
+//     });
+// }
 
 function subscribeByNewsletterForm(){
     if (newsletterForm) {

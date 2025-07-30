@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Redesigned WFP Website - Responsive and Accessible">
+    <meta name="description" content=" WFP Website With TailwindCSS- Responsive and Accessible">
     <title>WFP Project</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="src/output.css" rel="stylesheet">
+    <link href="src/input.css" rel="stylesheet">
+    <link href="src/css/style.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <script>
         tailwind.config = {
+            dark: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -36,9 +40,10 @@
             }
         }
     </script>
+
     <style type="text/tailwindcss">
         @layer utilities {
-            .dark-mode {
+            .dark {
                 --bg-color: #252121;
                 --text-color: #f1f1f1;
                 --wfp-dark-blue: #007DBC;
@@ -56,57 +61,50 @@
             }
             
             .wfp-logo-spinner {
-                @apply w-20 h-20 border-4 border-gray-300 border-t-wfp-orange rounded-full animate-spin;
+                @apply w-20 h-30 border-4 border-gray-300 border-t-wfp-orange rounded-full animate-spin;
             }
         }
     </style>
 </head>
-<body class="font-main bg-bg-color text-text-color transition-colors duration-300">
-    <!-- Loader -->
-    <!-- <div class="loader fixed inset-0 w-full h-full bg-white bg-opacity-90 flex justify-center items-center z-[9999] transition-opacity duration-500">
-        <div class="wfp-logo-spinner"></div>
-    </div> -->
-
+<body class="dark text-text-color transition-colors duration-300">
     <!-- Header -->
-    <header class="navbar bg-nav-bg shadow-sm border-b border-border-color py-4 sticky top-0 z-[1000]">
-        <nav class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <a href="#" class="logo-img flex items-center">
-                    <img src="src/assets/images/wfp-logo.svg" alt="WFP Logo" class="logo h-20 bg-wfp-blue">
-                    <h2 class="ml-4"><span class="brand font-bold text-xl">WFP<span class="text-wfp-orange">Organization</span></span></h2>
-                </a>
+    <header class="navbar bg-nav-bg shadow-sm border-b border-border-color py-4 sticky top-0 z-[1000]">        <nav class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+            <a href="#" class="logo-img flex items-center">
+                <img src="src/assets/images/wfp-logo.svg" alt="WFP Logo" class="logo h-20 bg-wfp-blue">
+                <h2 class="ml-4"><span class="brand font-bold text-xl">WFP<span class="text-wfp-orange">Organization</span></span></h2>
+            </a>
+            
+            <div class="nav-theme flex items-center">
+                <!-- <button id="theme-toggle" class="p-1 mx-4 bg-gray-300  rounded-full  ">
+                    <span id="light-icon" class="">🌙</span>
+                    <span id="dark-icon" class="hidden">🌞</span>
+                </button> -->
                 
-                <div class="nav-theme flex items-center">
-                    <!-- Toggle Dark Mode -->
-                    <label class="theme-switch relative inline-block w-8 h-8 mr-4 opacity-60">
-                        <input type="checkbox" id="theme-toggle" class="opacity-0 w-0 h-0">
-                        <span class="slider absolute cursor-pointer inset-0 bg-wfp-dark-blue rounded-full transition duration-400 before:content-['☀️'] before:absolute before:left-1 before:bottom-1"></span>
-                    </label>
-                    
-                    <!-- Hamburger Menu -->
-                    <button class="menu-toggle md:hidden flex flex-col justify-between w-6 h-5 bg-transparent border-none cursor-pointer p-0">
-                        <span class="block w-full h-0.5 bg-text-color"></span>
-                        <span class="block w-full h-0.5 bg-text-color"></span>
-                        <span class="block w-full h-0.5 bg-text-color"></span>
-                    </button>
-                    
-                    <div class="nav-links hidden md:flex gap-4 items-center">
-                        <a href="index.html" class="active font-medium hover:text-primary-color transition-colors duration-300">Home</a>
-                        <a href="about.html" class="font-medium hover:text-primary-color transition-colors duration-300">About</a>
-                        <a href="projects.html" class="font-medium hover:text-primary-color transition-colors duration-300">Projects</a>
-                        <a href="contact.html" class="font-medium hover:text-primary-color transition-colors duration-300">Contact</a>    
-                    </div>
+                <!-- Hamburger Menu -->
+                <button class="menu-toggle md:hidden flex flex-col justify-between w-6 h-5 bg-transparent border-none cursor-pointer p-0">
+                    <span class="block w-full h-0.5 bg-text-color"></span>
+                    <span class="block w-full h-0.5 bg-text-color"></span>
+                    <span class="block w-full h-0.5 bg-text-color"></span>
+                </button>
+                
+                <div class="nav-links hidden md:flex gap-4 items-center">
+                    <a href="index.html" class="active font-medium hover:text-primary-color transition-colors duration-300">Home</a>
+                    <a href="about.html" class="font-medium hover:text-primary-color transition-colors duration-300">About</a>
+                    <a href="projects.html" class="font-medium hover:text-primary-color transition-colors duration-300">Projects</a>
+                    <a href="contact.html" class="font-medium hover:text-primary-color transition-colors duration-300">Contact</a>    
                 </div>
             </div>
-            
-            <!-- Mobile Menu -->
-            <div class="nav-links-mobile hidden absolute top-full left-0 right-0 bg-nav-bg flex-col p-4 shadow-md md:hidden">
-                <a href="index.html" class="active py-2 font-medium hover:text-primary-color transition-colors duration-300">Home</a>
-                <a href="about.html" class="py-2 font-medium hover:text-primary-color transition-colors duration-300">About</a>
-                <a href="projects.html" class="py-2 font-medium hover:text-primary-color transition-colors duration-300">Projects</a>
-                <a href="contact.html" class="py-2 font-medium hover:text-primary-color transition-colors duration-300">Contact</a>
-            </div>
-        </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="nav-links-mobile hidden flex items-center absolute top-full left-0 right-0 bg-nav-bg flex-col p-4 shadow-md md:hidden">
+            <a href="index.html" class="active py-2 font-medium hover:text-primary-color transition-colors duration-300">Home</a>
+            <a href="about.html" class="py-2 font-medium hover:text-primary-color transition-colors duration-300">About</a>
+            <a href="projects.html" class="py-2 font-medium hover:text-primary-color transition-colors duration-300">Projects</a>
+            <a href="contact.html" class="py-2 font-medium hover:text-primary-color transition-colors duration-300">Contact</a>
+        </div>
+    </nav>
     </header>
 
     <main>
@@ -319,7 +317,7 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top hidden fixed bottom-5 right-5 w-12 h-12 rounded-full bg-wfp-orange text-white border-none cursor-pointer text-xl shadow-md hover:bg-wfp-orange-hover transition duration-300 z-[999]">
+    <button id="back-to-top" class="fixed hidden bottom-5 right-5 w-12 h-12 rounded-full bg-wfp-orange text-white shadow-lg hover:bg-wfp-orange-hover transition-all duration-300 z-[999]">
         ↑
     </button>
 
