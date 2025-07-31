@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WFP Organization - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'wfp-blue': '#007DBC',
+                        'wfp-dark-blue': '#003A5D',
+                        'wfp-orange': '#E84E10',
+                        'wfp-orange-hover': '#f67e4e',
+                    },
+                    fontFamily: {
+                        'main': ['Arial', '"Segoe UI"', '"Open Sans"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-main bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <!-- <aside class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-wfp-dark-blue text-white">
+                <div class="flex items-center justify-center h-16 px-4 border-b border-blue-800">
+                    <img src="../assets/images/wfp-logo.svg" alt="WFP Logo" class="h-10 mr-2">
+                    <span class="text-xl font-bold">WFP Dashboard</span>
+                </div>
+                <div class="flex flex-col flex-grow px-4 py-4 overflow-y-auto">
+                    <nav class="flex-1 space-y-2">
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg bg-blue-700 text-white">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Dashboard
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-users mr-3"></i>
+                            Beneficiaries
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-project-diagram mr-3"></i>
+                            Projects
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-donate mr-3"></i>
+                            Donations
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Reports
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-cog mr-3"></i>
+                            Settings
+                        </a>
+                    </nav>
+                </div>
+                <div class="p-4 border-t border-blue-800">
+                    <div class="flex items-center">
+                        <img class="w-10 h-10 rounded-full" src="../assets/images/salah.jpg" alt="Admin">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium">Admin User</p>
+                            <p class="text-xs text-blue-200">admin@wfp.org</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside> -->
+
+        <!-- Mobile sidebar -->
+        <!-- <div class="md:hidden fixed inset-0 z-40" id="mobile-sidebar" style="display: none;">
+            <div class="fixed inset-0 bg-gray-600 bg-opacity-75" id="sidebar-backdrop"></div>
+            <div class="relative flex flex-col w-72 h-full bg-wfp-dark-blue">
+                <div class="flex items-center justify-between h-16 px-4 border-b border-blue-800">
+                    <div class="flex items-center">
+                        <img src="../assets/images/wfp-logo.svg" alt="WFP Logo" class="h-8 mr-2">
+                        <span class="text-lg font-bold">WFP Dashboard</span>
+                    </div>
+                    <button class="text-white" id="close-sidebar">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="flex-1 px-4 py-4 overflow-y-auto">
+                    <nav class="space-y-2">
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg bg-blue-700 text-white">
+                            <i class="fas fa-tachometer-alt mr-3"></i>
+                            Dashboard
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-users mr-3"></i>
+                            Beneficiaries
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-project-diagram mr-3"></i>
+                            Projects
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-donate mr-3"></i>
+                            Donations
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Reports
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-blue-700 text-white">
+                            <i class="fas fa-cog mr-3"></i>
+                            Settings
+                        </a>
+                    </nav>
+                </div>
+                <div class="p-4 border-t border-blue-800">
+                    <div class="flex items-center">
+                        <img class="w-10 h-10 rounded-full" src="../assets/images/salah.jpg" alt="Admin">
+                        <div class="ml-3">
+                            <p class="text-sm font-medium">Admin User</p>
+                            <p class="text-xs text-blue-200">admin@wfp.org</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Main content -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <!-- Top navigation -->
+            <header class="flex items-center justify-between h-16 px-4 bg-white border-b border-gray-200">
+                <div class="flex items-center">
+                    <button class="md:hidden text-gray-500 focus:outline-none" id="open-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="ml-4 text-xl font-semibold text-gray-800">Dashboard</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 text-gray-500 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button class="p-2 text-gray-500 rounded-full hover:bg-gray-100">
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 focus:outline-none" id="user-menu-button">
+                            <span class="text-sm font-medium">Admin User</span>
+                            <img class="w-8 h-8 rounded-full" src="../assets/images/salah.jpg" alt="Admin">
+                        </button>
+                        <div class="absolute right-0 hidden w-48 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5" id="user-menu">
+                            <div class="py-1" role="none">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Main content area -->
+            <main class="flex-1 overflow-auto p-4 bg-gray-50">
+                <!-- Stats Cards -->
+                <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Total Beneficiaries</p>
+                                <p class="text-3xl font-bold text-wfp-blue">15,842</p>
+                            </div>
+                            <div class="p-3 rounded-full bg-blue-100 text-wfp-blue">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-sm text-green-600">
+                            <i class="fas fa-arrow-up mr-1"></i> 12.5% from last month
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Active Projects</p>
+                                <p class="text-3xl font-bold text-wfp-blue">24</p>
+                            </div>
+                            <div class="p-3 rounded-full bg-orange-100 text-wfp-orange">
+                                <i class="fas fa-project-diagram text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-sm text-green-600">
+                            <i class="fas fa-arrow-up mr-1"></i> 3 new this month
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Total Donations</p>
+                                <p class="text-3xl font-bold text-wfp-blue">$2.4M</p>
+                            </div>
+                            <div class="p-3 rounded-full bg-green-100 text-green-600">
+                                <i class="fas fa-donate text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-sm text-green-600">
+                            <i class="fas fa-arrow-up mr-1"></i> 8.2% from last month
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm font-medium text-gray-500">Volunteers</p>
+                                <p class="text-3xl font-bold text-wfp-blue">342</p>
+                            </div>
+                            <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                                <i class="fas fa-hands-helping text-xl"></i>
+                            </div>
+                        </div>
+                        <p class="mt-2 text-sm text-red-600">
+                            <i class="fas fa-arrow-down mr-1"></i> 2.3% from last month
+                        </p>
+                    </div>
+                </div> -->
+
+                <!-- Recent Activities and Projects -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                    <!-- Recent Activities -->
+                    <!-- <div class="lg:col-span-2 bg-white rounded-lg shadow overflow-hidden">
+                        <div class="px-6 py-4 border-b border-gray-200">
+                            <h2 class="text-lg font-semibold text-gray-800">Recent Activities</h2>
+                        </div>
+                        <div class="divide-y divide-gray-200">
+                            <div class="p-6 hover:bg-gray-50">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 p-2 bg-blue-100 rounded-full text-wfp-blue">
+                                        <i class="fas fa-donate"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-900">New donation received</p>
+                                        <p class="text-sm text-gray-500">$5,000 from John Doe for Food Security Project</p>
+                                        <p class="mt-1 text-xs text-gray-400">2 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6 hover:bg-gray-50">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 p-2 bg-green-100 rounded-full text-green-600">
+                                        <i class="fas fa-user-plus"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-900">New volunteer registered</p>
+                                        <p class="text-sm text-gray-500">Sarah Johnson joined the Education Program</p>
+                                        <p class="mt-1 text-xs text-gray-400">5 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6 hover:bg-gray-50">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 p-2 bg-orange-100 rounded-full text-wfp-orange">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-900">Project milestone reached</p>
+                                        <p class="text-sm text-gray-500">Women's Empowerment Project helped 500 women this month</p>
+                                        <p class="mt-1 text-xs text-gray-400">1 day ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6 hover:bg-gray-50">
+                                <div class="flex items-start">
+                                    <div class="flex-shrink-0 p-2 bg-purple-100 rounded-full text-purple-600">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <p class="text-sm font-medium text-gray-900">Event completed</p>
+                                        <p class="text-sm text-gray-500">Fundraising Gala raised $250,000</p>
+                                        <p class="mt-1 text-xs text-gray-400">2 days ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 border-t border-gray-200 text-center">
+                            <a href="#" class="text-sm font-medium text-wfp-blue hover:text-wfp-dark-blue">View all activities</a>
+                        </div>
+                    </div> -->
+
+                    <!-- Quick Actions -->
+                    <!-- <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="px-6 py-4 border-b border-gray-200">
+                            <h2 class="text-lg font-semibold text-gray-800">Quick Actions</h2>
+                        </div>
+                        <div class="p-6 grid grid-cols-2 gap-4">
+                            <a href="#" class="flex flex-col items-center justify-center p-4 rounded-lg border border-gray-200 hover:bg-gray-50">
+                                <div class="p-3 mb-2 rounded-full bg-blue-100 text-wfp-blue">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">Add Project</span>
+                            </a>
+                            <a href="#" class="flex flex-col items-center justify-center p-4 rounded-lg border border-gray-200 hover:bg-gray-50">
+                                <div class="p-3 mb-2 rounded-full bg-green-100 text-green-600">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">Add Beneficiary</span>
+                            </a>
+                            <a href="#" class="flex flex-col items-center justify-center p-4 rounded-lg border border-gray-200 hover:bg-gray-50">
+                                <div class="p-3 mb-2 rounded-full bg-orange-100 text-wfp-orange">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">Create Report</span>
+                            </a>
+                            <a href="#" class="flex flex-col items-center justify-center p-4 rounded-lg border border-gray-200 hover:bg-gray-50">
+                                <div class="p-3 mb-2 rounded-full bg-purple-100 text-purple-600">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <span class="text-sm font-medium text-gray-700">Send Newsletter</span>
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+
+                <!-- Projects Overview -->
+                <!-- <div class="bg-white rounded-lg shadow overflow-hidden mb-6">
+                    <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                        <h2 class="text-lg font-semibold text-gray-800">Projects Overview</h2>
+                        <a href="#" class="text-sm font-medium text-wfp-blue hover:text-wfp-dark-blue">View all projects</a>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Beneficiaries</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Budget</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Progress</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="../assets/images/proj1.jpg" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Food Security</div>
+                                                <div class="text-sm text-gray-500">Emergency Relief</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8,742</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$1.2M</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-wfp-blue h-2.5 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="../assets/images/proj2.jpg" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Women's Empowerment</div>
+                                                <div class="text-sm text-gray-500">Development</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2,150</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$450K</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-wfp-blue h-2.5 rounded-full" style="width: 40%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="../assets/images/proj3.jpg" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">School Feeding</div>
+                                                <div class="text-sm text-gray-500">Education</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Planning</span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">-</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$300K</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                            <div class="bg-wfp-blue h-2.5 rounded-full" style="width: 15%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div> -->
+            </main>
+        </div>
+    </div>
+    <script src="../js/main.js"></script>
+</body>
+</html>
